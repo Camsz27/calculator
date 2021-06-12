@@ -9,37 +9,37 @@
 <body class='body'>
     <div class='calculator'>
         <div class='screen'>
-            <p class='text operation'>Operation</p>
-            <p class='text result'>Answer</p>
+            <p class='text operation'></p>
+            <p class='text result'></p>
         </div>
         <div class='buttons'>
-            <button class='button'>Del</button>
-            <button class='button main'>CE</button>
-            <button class='button main'>C</button>
-            <button class='button operator'>/</button>
+            <button class='button' id='del' data-key='8'>Del</button>
+            <button class='button main' id='ce' data-key='69'>CE</button>
+            <button class='button main' id='c' data-key='67'>C</button>
+            <button class='button operator' id='divide' data-key='68'>/</button>
         </div>
         <div class='buttons'>
-            <button class='button'>7</button>
-            <button class='button'>8</button>
-            <button class='button'>9</button>
-            <button class='button operator'>x</button>
+            <button class='button' data-key='55'>7</button>
+            <button class='button' data-key='56'>8</button>
+            <button class='button' data-key='57'>9</button>
+            <button class='button operator' id='multiply' data-key='88'>x</button>
         </div>
         <div class='buttons'>
-            <button class='button'>4</button>
-            <button class='button'>5</button>
-            <button class='button'>6</button>
-            <button class='button operator'>-</button>
+            <button class='button' data-key='52'>4</button>
+            <button class='button' data-key='53'>5</button>
+            <button class='button' data-key='54'>6</button>
+            <button class='button operator' id='subtract' data-key='189'>-</button>
         </div>
         <div class='buttons'>
-            <button class='button'>1</button>
-            <button class='button'>2</button>
-            <button class='button'>3</button>
-            <button class='button operator'>+</button>
+            <button class='button' data-key='49'>1</button>
+            <button class='button' data-key='50'>2</button>
+            <button class='button' data-key='51'>3</button>
+            <button class='button operator' id='add' data-key='187'>+</button>
         </div>
         <div class='buttons'>
-            <button class='button' id='cero'>0</button>
-            <button class='button'>.</button>
-            <button class='button operator' id='equal'>=</button>
+            <button class='button' id='cero' data-key='48'>0</button>
+            <button class='button' data-key='190'>.</button>
+            <button class='button operator' id='equal' data-key="13">=</button>
         </div>
     </div>
 <script src="script.js">  
