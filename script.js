@@ -11,7 +11,7 @@ const cButton = document.querySelector('#c');
 let operator = add;
 let a = 0;
 let b = 0;
-
+let countSigns = 0;
 
 buttons.forEach(button => button.addEventListener('click', change));
 
@@ -27,22 +27,39 @@ cButton.addEventListener('click', clear);
 ceButton.removeEventListener('click', change);
 ceButton.addEventListener('click', clearLast);
 
-window.addEventListener('keydown', practice);
+window.addEventListener('keydown', press);
 
-function practice(e) {
+function press(e) {
     const key = document.querySelector(`button[data-key="${e.keyCode}"]`)
     key.click();
 }
 
 function change(e) {
+    let text = operation.textContent + this.textContent
     if(this.getAttribute('class').includes('operator')) {
         operator = eval(this.id);
+        countSigns++;
+        if (countSigns > 1) {
+            alert("Only one operation at a time can be carried out");
+        }
     }
-    operation.textContent = operation.textContent + this.textContent;
+    if (text.length < 18) {
+       operation.textContent = text; 
+    } else {
+        alert("Operation can't be longer than 18 digits");
+    }
 }
 
 function showResult(){
-    result.textContent = operate(operator,a,b);
+    let answer = operate(operator,a,b);
+    if (answer.toString().length > 11) {
+        alert("Answer can't be longer than 11 digits");
+    } else {
+        result.textContent = answer;
+    }
+    operation.textContent = answer;
+    b = 0;
+    countSigns = 0;
 }
 
 function add(a, b) {
@@ -64,13 +81,9 @@ function divide(a, b) {
 }
 
 function operate(operator, a, b) {
-    let ans;
-    ans = findNums();
-    console.log(ans);
+    let ans = findNums();
     a = ans[0];
     b = ans[1];
-    console.log(a,b);
-    console.log(operator);
     return operator(a, b);
 }
 
@@ -79,6 +92,10 @@ function findNums() {
     let pos = txt.search('[x+\/-]');
     let num1 = txt.slice(0,pos);
     let num2 = txt.slice(pos+1);
+    if(pos == -1){
+        num1 = txt;
+        num2 = 0;
+    }
     return [num1, num2];
 }
 
@@ -92,6 +109,8 @@ function clear(){
 
 function clearLast() {
     let pos = operation.textContent.search('[x+\/-]');
-    console.log(pos);
+    if (pos === operation.textContent.length - 1) {
+        clear();
+    }
     operation.textContent = operation.textContent.slice(0, pos+1);
 }
