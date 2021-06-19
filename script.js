@@ -52,12 +52,16 @@ function change(e) {
 
 function showResult(){
     let answer = operate(operator,a,b);
-    if (answer.toString().length > 11) {
+    console.log(Math.round(answer));
+    if (Math.round(answer).toString().length > 11) {
         alert("Answer can't be longer than 11 digits");
+    } else if (answer.toString().length > 11) {
+        result.textContent = answer.toString().slice(0, 11);
+        operation.textContent = answer.toString().slice(0, 11);
     } else {
         result.textContent = answer;
+        operation.textContent = answer;
     }
-    operation.textContent = answer;
     b = 0;
     countSigns = 0;
 }
